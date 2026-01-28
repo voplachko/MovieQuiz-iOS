@@ -9,11 +9,7 @@ import Foundation
 
 final class QuestionFactory: QuestionFactoryProtocol {
     
-    weak var delegate: QuestionFactoryDelegate?
-        
-    func setup(delegate: QuestionFactoryDelegate) {
-        self.delegate = delegate
-    }
+    private weak var delegate: QuestionFactoryDelegate?
     
     let questions: [QuizQuestion] = [
         QuizQuestion(
@@ -57,6 +53,10 @@ final class QuestionFactory: QuestionFactoryProtocol {
             text: "Рейтинг этого фильма больше чем 6?",
             correctAnswer: false)
     ]
+    
+    func setup(delegate: QuestionFactoryDelegate) {
+        self.delegate = delegate
+    }
 
     func requestNextQuestion() {
         guard let index = (0..<questions.count).randomElement() else {
