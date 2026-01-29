@@ -101,6 +101,7 @@
 		8F4738322848DE2A005DF65E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				F6D2D2EC2F29D22600B1CBC3 /* MovieQuizStrings.swift */,
 				F676979A2F275586004084AD /* AlertPresenter.swift */,
 				AD1ABAB52831907B00B3E448 /* MovieQuizViewController.swift */,
 				AD1ABAB72831907B00B3E448 /* Main.storyboard */,
@@ -265,6 +266,7 @@
 				AD1ABAB62831907B00B3E448 /* MovieQuizViewController.swift in Sources */,
 				F6EFB5432F2348BB0091EFCE /* QuestionFactory.swift in Sources */,
 				AD77F5742857F8810062FB14 /* Date+Extensions.swift in Sources */,
+				F6D2D2ED2F29D23F00B1CBC3 /* MovieQuizStrings.swift in Sources */,
 				AD1ABAB22831907B00B3E448 /* AppDelegate.swift in Sources */,
 				AD1ABAB42831907B00B3E448 /* SceneDelegate.swift in Sources */,
 				F656D6782F287DA000ADB663 /* StatisticService.swift in Sources */,

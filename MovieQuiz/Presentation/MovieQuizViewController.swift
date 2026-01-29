@@ -22,21 +22,45 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureUI()
+        configureServices()
+        startGame()
+    }
+    
+    // MARK: - Setup
+    
+    private func configureUI() {
+        configureImageView()
+    }
+    
+    private func configureImageView() {
         imageView.layer.cornerRadius = 20
         imageView.layer.masksToBounds = true
-        
-        let questionFactory = QuestionFactory()
-        questionFactory.setup(delegate: self)
-        self.questionFactory = questionFactory
-        
+    }
+    
+    private func configureServices() {
+        configureQuestionFactory()
+        configureStatisticService()
+    }
+    
+    private func configureQuestionFactory() {
+        let factory = QuestionFactory()
+        factory.setup(delegate: self)
+        self.questionFactory = factory
+    }
+    
+    private func configureStatisticService() {
         statisticService = StatisticService()
-        questionFactory.requestNextQuestion()
+    }
+    
+    private func startGame() {
+        questionFactory?.requestNextQuestion()
     }
     
     // MARK: - QuestionFactoryDelegate
     
     func didReceiveNextQuestion(question: QuizQuestion?) {
-        guard let question = question else {
+        guard let question else {
             return
         }
         
@@ -123,9 +147,9 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         let message =
         """
         \(result.text)
-        Количество сыгранных квизов: \(statisticService.gamesCount)
-        Рекорд: \(bestGame.correct)/\(bestGame.total) (\(bestGame.date.dateTimeString))
-        Средняя точность: \(String(format: "%.2f", statisticService.totalAccuracy))%
+        \(Strings.quizzesCount) \(statisticService.gamesCount)
+        \(Strings.record) \(bestGame.correct)/\(bestGame.total) (\(bestGame.date.dateTimeString))
+        \(Strings.averageAccuracy) \(String(format: "%.2f", statisticService.totalAccuracy))%
         """
         
         let model = AlertModel(
