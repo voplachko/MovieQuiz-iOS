@@ -108,16 +108,22 @@
                                     <constraint firstAttribute="trailing" secondItem="v1p-ll-z7A" secondAttribute="trailing" id="hJZ-Ro-Maf"/>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="hAo-BZ-pc6">
+                                <rect key="frame" x="191" y="427" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="YP Black"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="mIX-kx-5c2" secondAttribute="trailing" constant="20" id="Ex4-gu-glW"/>
                             <constraint firstItem="mIX-kx-5c2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="KOS-Um-hC6"/>
+                            <constraint firstItem="hAo-BZ-pc6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="TKX-8V-a1F"/>
+                            <constraint firstItem="hAo-BZ-pc6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ae1-Hi-y0g"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mIX-kx-5c2" secondAttribute="bottom" id="i9l-KT-KbL"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="hAo-BZ-pc6" id="NP2-Qz-hsM"/>
                         <outlet property="counterLabel" destination="swy-iT-0cc" id="TcX-S8-QaN"/>
                         <outlet property="imageView" destination="v1p-ll-z7A" id="0kJ-v8-xLI"/>
                         <outlet property="noButton" destination="kMb-Qf-Hn6" id="x3P-35-aan"/>
