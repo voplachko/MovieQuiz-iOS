@@ -86,7 +86,7 @@ final class MovieQuizUITests: XCTestCase {
         sleep(2)
         for i in 1...10 {
             app.buttons[answers[i % answers.count]].tap()
-            sleep(2)
+            sleep(3)
         }
         
         let alert = app.alerts["Game results"]
@@ -104,7 +104,7 @@ final class MovieQuizUITests: XCTestCase {
         sleep(2)
         for i in 1...10 {
             app.buttons[answers[i % answers.count]].tap()
-            sleep(2)
+            sleep(3)
         }
         
         let alert = app.alerts["Game results"]

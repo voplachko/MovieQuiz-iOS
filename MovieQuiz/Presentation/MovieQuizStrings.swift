@@ -11,4 +11,5 @@ enum Strings {
     static let quizzesCount = "Количество сыгранных квизов:"
     static let record = "Рекорд:"
     static let averageAccuracy = "Средняя точность:"
+    static let yourResult = "Ваш результат:"
 }
