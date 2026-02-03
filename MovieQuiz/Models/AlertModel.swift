@@ -8,8 +8,23 @@
 import Foundation
 
 struct AlertModel {
-    var title: String
-    var message: String
-    var buttonText: String
-    var completion: () -> Void
+    let title: String
+    let message: String
+    let buttonText: String
+    let completion: () -> Void
+    let accessibilityIdentifier: String?
+
+    init(
+        title: String,
+        message: String,
+        buttonText: String,
+        accessibilityIdentifier: String? = nil,
+        completion: @escaping () -> Void
+    ) {
+        self.title = title
+        self.message = message
+        self.buttonText = buttonText
+        self.accessibilityIdentifier = accessibilityIdentifier
+        self.completion = completion
+    }
 }
