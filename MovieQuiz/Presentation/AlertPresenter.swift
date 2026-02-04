@@ -24,6 +24,9 @@ final class AlertPresenter {
             }
             
             alert.addAction(action)
+            if let id = model.accessibilityIdentifier {
+                alert.view.accessibilityIdentifier = id
+            }
             vc.present(alert, animated: true)
         }
     }
