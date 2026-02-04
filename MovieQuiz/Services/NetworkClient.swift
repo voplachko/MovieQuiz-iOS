@@ -13,6 +13,8 @@ protocol NetworkRouting {
 
 struct NetworkClient: NetworkRouting {
     
+    private let successStatusCodes = 200..<300
+    
     private enum NetworkError: Error {
         case codeError
     }
@@ -27,7 +29,7 @@ struct NetworkClient: NetworkRouting {
             }
             
             if let response = response as? HTTPURLResponse,
-               response.statusCode < 200 || response.statusCode >= 300 {
+               !successStatusCodes.contains(response.statusCode) {
                 handler(.failure(NetworkError.codeError))
                 return
             }

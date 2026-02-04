@@ -20,14 +20,18 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
         
     init(viewController: MovieQuizViewControllerProtocol) {
         self.viewController = viewController
-        
-        statisticService = StatisticService()
-        
-        questionFactory = QuestionFactory(moviesLoader: MoviesLoader(), delegate: self)
-        questionFactory?.loadData()
-        viewController.showLoadingIndicator()
+        self.statisticService = StatisticService()
+        setup()
     }
     
+    // MARK: - Setup
+    private func setup() {
+        questionFactory = QuestionFactory(moviesLoader: MoviesLoader(), delegate: self)
+        questionFactory?.loadData()
+        viewController?.showLoadingIndicator()
+    }
+    
+    // MARK: - Actions
     func noButtonClicked() {
         answerCurrentQuestion(with: false)
     }
@@ -53,7 +57,7 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
         viewController?.showNetworkError(message: message)
     }
         
-    func didAnswer(isCorrectAnswer: Bool) {
+    private func didAnswer(isCorrectAnswer: Bool) {
         if isCorrectAnswer {
             correctAnswers += 1
         }
@@ -73,12 +77,8 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
         }
     }
     
-    func isLastQuestion() -> Bool {
+    private func isLastQuestion() -> Bool {
         currentQuestionIndex == questionsAmount - 1
-    }
-    
-    func resetQuestionIndex() {
-        currentQuestionIndex = 0
     }
     
     func restartGame() {
@@ -87,11 +87,11 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
         questionFactory?.requestNextQuestion()
     }
     
-    func switchToNextQuestion() {
+    private func switchToNextQuestion() {
         currentQuestionIndex += 1
     }
     
-    func convert(model: QuizQuestion) -> QuizStepViewModel {
+    private func convert(model: QuizQuestion) -> QuizStepViewModel {
         QuizStepViewModel(
             image: model.image,
             question: model.text,
@@ -99,14 +99,14 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
         )
     }
     
-    func showNextQuestionOrResults() {
+    private func showNextQuestionOrResults() {
         if self.isLastQuestion() {
-            let text = "Ваш результат: \(self.correctAnswers)/\(self.questionsAmount)"
+            let text = "\(Strings.yourResult) \(self.correctAnswers)/\(self.questionsAmount)"
             
             let viewModel = QuizResultsViewModel(
-                title: "Этот раунд окончен!",
+                title: "\(Strings.roundFinished)",
                 text: text,
-                buttonText: "Сыграть ещё раз"
+                buttonText: "\(Strings.playAgain)"
             )
             viewController?.show(quiz: viewModel)
         } else {
@@ -135,7 +135,7 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
         ].joined(separator: "\n")
     }
     
-    func showAnswerResult(isCorrect: Bool) {
+    private func showAnswerResult(isCorrect: Bool) {
         didAnswer(isCorrectAnswer: isCorrect)
         
         viewController?.highlightImageBorder(isCorrectAnswer: isCorrect)

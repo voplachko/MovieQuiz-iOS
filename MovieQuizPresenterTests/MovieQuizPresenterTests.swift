@@ -11,31 +11,31 @@ import XCTest
 final class MovieQuizViewControllerMock: MovieQuizViewControllerProtocol {
     
     func show(quiz step: QuizStepViewModel) {
-        
+        // TODO:
     }
     
     func show(quiz result: QuizResultsViewModel) {
-        
+        // TODO:
     }
     
     func highlightImageBorder(isCorrectAnswer: Bool) {
-        
+        // TODO:
     }
     
     func showLoadingIndicator() {
-        
+        // TODO:
     }
     
     func hideLoadingIndicator() {
-        
+        // TODO:
     }
     
     func setButtonsEnabled(_ isEnabled: Bool) {
-        
+        // TODO:
     }
     
     func showNetworkError(message: String) {
-        
+        // TODO:
     }
 }
 
